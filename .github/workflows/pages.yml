@@ -1,4 +1,4 @@
-name: Build and deploy GitHub Pages
+﻿name: Build and deploy GitHub Pages
 
 on:
   push:
@@ -48,6 +48,7 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: /myweb
           NEXT_PUBLIC_SITE_URL: https://everegarcia.github.io/myweb
+          NEXT_PUBLIC_CONTACT_API_URL: https://vbfjbgbrkg.execute-api.us-east-1.amazonaws.com/contact
 
       - name: Validate infrastructure TypeScript
         run: npm run infra:build
@@ -79,3 +80,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
