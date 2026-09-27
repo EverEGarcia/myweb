@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/data/profile";
@@ -15,24 +16,24 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // SEO & Open Graph metadata
 //
 // DOMAIN NOTE: siteUrl defaults to the GitHub Pages URL.
-// armonicolat.com is a separate business domain — not used here.
+// armonicolat.com is a separate business domain â€” not used here.
 // Update NEXT_PUBLIC_SITE_URL in .env.local after deployment.
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ),
   title: {
-    default: "Ever Eslí — Portfolio",
-    template: "%s | Ever Eslí",
+    default: "Ever EslÃ­ â€” Portfolio",
+    template: "%s | Ever EslÃ­",
   },
   description: profile.metaDescription,
   keywords: [
-    "Ever Eslí",
+    "Ever EslÃ­",
     "Business Administrator",
     "Cloud",
     "Data Analytics",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     "Business Administration",
     "El Salvador",
   ],
-  authors: [{ name: "Ever Eslí" }],
+  authors: [{ name: "Ever EslÃ­" }],
   robots: {
     index: true,
     follow: true,
@@ -57,18 +58,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Ever Eslí — Portfolio",
+    title: "Ever EslÃ­ â€” Portfolio",
     description: profile.metaDescription,
-    siteName: "Ever Eslí Portfolio",
+    siteName: "Ever EslÃ­ Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ever Eslí — Portfolio",
+    title: "Ever EslÃ­ â€” Portfolio",
     description: profile.metaDescription,
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
@@ -84,3 +85,5 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
+
+
