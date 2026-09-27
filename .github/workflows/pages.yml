@@ -1,0 +1,81 @@
+name: Build and deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install portfolio dependencies
+        run: npm ci
+
+      - name: Install isolated infrastructure dependencies
+        run: npm ci --prefix infra
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build static project-site export
+        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /myweb
+          NEXT_PUBLIC_SITE_URL: https://everegarcia.github.io/myweb
+
+      - name: Validate infrastructure TypeScript
+        run: npm run infra:build
+
+      - name: Synthesize infrastructure locally
+        run: npm run infra:synth
+        env:
+          SES_REGION: us-east-1
+          SES_FROM_ADDRESS: ci-placeholder@example.invalid
+          NOTIFICATION_EMAIL: everesliga@gmail.com
+          PORTFOLIO_ORIGIN: https://everegarcia.github.io
+          DEVELOPMENT_ORIGIN: http://localhost:3000
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
