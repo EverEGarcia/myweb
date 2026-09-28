@@ -16,24 +16,17 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// SEO & Open Graph metadata
-//
-// DOMAIN NOTE: siteUrl defaults to the GitHub Pages URL.
-// armonicolat.com is a separate business domain â€” not used here.
-// Update NEXT_PUBLIC_SITE_URL in .env.local after deployment.
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ),
   title: {
-    default: "Ever EslÃ­ â€” Portfolio",
-    template: "%s | Ever EslÃ­",
+    default: "Ever Esli — Portafolio",
+    template: "%s | Ever Esli",
   },
   description: profile.metaDescription,
   keywords: [
-    "Ever EslÃ­",
+    "Ever Esli",
     "Business Administrator",
     "Cloud",
     "Data Analytics",
@@ -45,7 +38,7 @@ export const metadata: Metadata = {
     "Business Administration",
     "El Salvador",
   ],
-  authors: [{ name: "Ever EslÃ­" }],
+  authors: [{ name: "Ever Esli" }],
   robots: {
     index: true,
     follow: true,
@@ -57,14 +50,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    title: "Ever EslÃ­ â€” Portfolio",
+    locale: "es_SV",
+    title: "Ever Esli — Portafolio",
     description: profile.metaDescription,
-    siteName: "Ever EslÃ­ Portfolio",
+    siteName: "Ever Esli Portafolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ever EslÃ­ â€” Portfolio",
+    title: "Ever Esli — Portafolio",
     description: profile.metaDescription,
   },
 };
@@ -72,10 +65,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning={true}
     >
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body
         className="flex min-h-full flex-col bg-slate-950 text-slate-50"
         suppressHydrationWarning={true}
@@ -85,5 +81,3 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
-
-
