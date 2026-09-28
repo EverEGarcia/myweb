@@ -1,59 +1,154 @@
-# myWeb Portfolio
+myWeb Portfolio
 
-Owner: Ever Eslí  |  Contact: everesliga@gmail.com
+Personal portfolio website for Ever Eslí, built with Next.js, React, TypeScript, and Tailwind CSS.
 
-This project is a Next.js portfolio for Ever Eslí built with React, TypeScript, Tailwind CSS, and a data-driven component layout. Phase 1 is the static frontend and local contact flow. Phase 2 contact infrastructure is implemented as AWS CDK code but has not been deployed.
+Stack
 
-## Stack
+Next.js App Router
 
-- Next.js App Router
-- React
-- TypeScript
-- Tailwind CSS
-- Zod validation
-- React Hook Form
-- Vitest
-- AWS CDK and SESv2 SDK in the isolated `infra/` backend package
+React
 
-## Local development
+TypeScript
 
-```bash
+Tailwind CSS
+
+Zod validation
+
+React Hook Form
+
+Vitest
+
+AWS CDK and SESv2 SDK in the isolated infra/ backend package
+
+Calendly meeting scheduling
+
+Local development
 npm install
 npm run dev
-```
+
 
 Open http://localhost:3000 to view the app.
 
-## GitHub Pages project site
+GitHub Pages project site
 
-The Pages workflow builds this repository for `/myweb/` by setting `NEXT_PUBLIC_BASE_PATH=/myweb` and `NEXT_PUBLIC_SITE_URL=https://everegarcia.github.io/myweb`. Local builds leave the base path empty. The workflow publishes the static `out/` directory; the project-site URL is not claimed live until verified.
+The Pages workflow builds this repository for /myweb/ using:
 
-## Testing and validation
+NEXT_PUBLIC_BASE_PATH=/myweb
 
-```bash
+NEXT_PUBLIC_SITE_URL=https://everegarcia.github.io/myweb
+
+Local builds leave the base path empty.
+
+The workflow publishes the static out/ directory.
+
+Contact
+
+The portfolio provides several ways for visitors to get in touch:
+
+Contact form
+
+Direct email
+
+WhatsApp, when configured
+
+LinkedIn, when configured
+
+GitHub
+
+Embedded Calendly scheduling
+
+Calendly is embedded directly into the Contact section so visitors can schedule a meeting without leaving the portfolio.
+
+The contact form uses NEXT_PUBLIC_CONTACT_API_URL when a contact API endpoint is configured.
+
+If the contact API is not configured, the form displays a message directing visitors to use the available direct contact method rather than making an invalid request.
+
+Testing and validation
+
+Run:
+
 npm run lint
 npm run typecheck
 npm test
 npm run build
 npm run infra:build
-```
 
-The project uses a static export configuration and writes to the `out/` directory. To synthesize the Phase 2 template locally, set `SES_FROM_ADDRESS` to a verified sender and run `npm run infra:synth`. Synthesis does not deploy resources.
 
-## Portfolio content
+The project uses a static export configuration and writes the production output to the out/ directory.
 
-This portfolio highlights software development, cloud and IT learning, data analytics, and professional technical support work.
+To synthesize the Phase 2 AWS infrastructure locally, set SES_FROM_ADDRESS to a verified sender and run:
+
+npm run infra:synth
+
+
+Synthesis does not deploy AWS resources.
+
+Portfolio content
+
+This portfolio highlights:
+
+Software development
+
+Cloud and IT learning
+
+Data analytics
+
+Professional technical support
+
+Technical projects and professional experience
 
 For complete professional history and career timeline, visit LinkedIn. Credential evidence and supporting documentation are available upon request.
 
-armonicolat.com is an independent business entity/website and completely outside the scope of this repository.
+armonicolat.com is an independent business entity/website and is completely outside the scope of this repository.
 
-Phase 1 is restricted to local development and static build validation; no AWS infrastructure is provisioned in this phase.
+AWS / Phase 2
 
-## Current status
+The AWS CDK backend and SES sender implementation are included as Phase 2 source code.
 
-The frontend and local contact flow are Phase 1. The CDK backend and SES sender implementation are Phase 2 source code, not deployed infrastructure. No AWS resources have been provisioned and production email delivery has not been tested. `NEXT_PUBLIC_CONTACT_API_URL` remains empty until a real endpoint is deployed; with it unset, the form directs visitors to email directly. SES identity verification is a manual prerequisite and has not been performed by the agent.
+No AWS infrastructure is provisioned as part of the current static frontend deployment unless explicitly deployed separately.
 
-## Static export
+Production email delivery requires:
 
-The app is configured with `output: "export"` and is prepared for static hosting environments such as GitHub Pages.
+A deployed contact API.
+
+A verified SES sender identity.
+
+NEXT_PUBLIC_CONTACT_API_URL configured with the production API endpoint.
+
+Current release
+v0.0.2
+
+This release includes:
+
+Updated portfolio content and profile data.
+
+Updated Hero section.
+
+Updated Contact section.
+
+Embedded Calendly meeting scheduling.
+
+Contact form improvements.
+
+GitHub Pages static deployment support.
+
+Updated project documentation.
+
+Removal of personal email address from repository documentation.
+
+Security
+
+Sensitive credentials, API keys, environment files, and private configuration should never be committed to this repository.
+
+Use environment variables for deployment-specific configuration.
+
+The contact form includes client-side validation and a honeypot field. Server-side validation and rate limiting should also be enforced by the production contact API.
+
+Static export
+
+The application is configured with:
+
+output: "export"
+
+
+and is prepared for static hosting environments such as GitHub Pages.

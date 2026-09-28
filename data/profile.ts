@@ -23,7 +23,7 @@ export const profile = {
   whatsapp: "",
 
   // Scheduling CTA — falls back to #contact scroll if empty
-  schedulingUrl: process.env.NEXT_PUBLIC_SCHEDULING_URL ?? "",
+  schedulingUrl: process.env.NEXT_PUBLIC_SCHEDULING_URL ?? "https://calendly.com/everesli/15min",
 
   // Profile headshot — verified present at public/ProfilePic_3_2026.png
   avatarUrl: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/ProfilePic_3_2026.png`,
